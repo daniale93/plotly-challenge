@@ -15,12 +15,12 @@ d3.json("data/samples.json").then((bellyData) => {
   // Updating dashboard with new subject  
   function updateDashboard(index) {
 
-
+    
     // Horizontal bar chart
     var sampleSubjectOTUs = data.samples[index].otu_ids;
     var sampleSubjectFreq = data.samples[index].sample_values;
     var otuLabels = data.samples[index].otu_labels;
-
+    // console.log(sampleSubjectOTUs)
     var washFrequency = data.metadata[+index].wfreq;
    
     var demoKeys = Object.keys(data.metadata[index]);
@@ -102,11 +102,11 @@ d3.json("data/samples.json").then((bellyData) => {
 
   function refreshData() {
     var dropdownMenu = d3.select("#selDataset");
-    var personsID = dropdownMenu.property("value");
-
+    var subjectID = dropdownMenu.property("value");
+    // console.log(subjectID)
 
     for (var i = 0; i < data.names.length; i++) {
-      if (personsID === data.names[i]) {
+      if (subjectID === data.names[i]) {
         updateDashboard(i);
         return
       }
